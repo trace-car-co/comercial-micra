@@ -1,0 +1,12 @@
+.rotating-text {
+  display: inline-flex;
+  overflow: hidden;
+}
+.rotating-text span {
+  display: inline-flex;
+  overflow: hidden;
+}
+.rotating-text span span {
+  display: inline-block;
+  will-change: transform, opacity;
+}

@@ -220,11 +220,13 @@ export default function Footer() {
                 { label: 'Proceso', href: '#como-funciona' },
                 { label: 'Plataforma', href: '#plataforma' },
                 { label: 'Contacto', href: '#contacto' },
+                { label: 'Términos y Condiciones', href: '#/terminos', isRoute: true },
+                { label: 'Política de Privacidad', href: '#/privacidad', isRoute: true },
               ].map((l) => (
                 <a
                   key={l.label}
                   href={l.href}
-                  onClick={(e) => {
+                  onClick={l.isRoute ? undefined : (e) => {
                     e.preventDefault()
                     document.querySelector(l.href)?.scrollIntoView({ behavior: 'smooth' })
                   }}

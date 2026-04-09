@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, MessageCircle } from 'lucide-react'
+import Magnet from './reactbits/Magnet'
+import BlurText from './reactbits/BlurText'
 
 export default function FinalCTA() {
   const scrollTo = (e, href) => {
@@ -8,7 +10,7 @@ export default function FinalCTA() {
   }
 
   return (
-    <section className="relative py-24 lg:py-32 px-5 lg:px-8 overflow-hidden">
+    <section aria-label="Solicitar demo de gestión metrológica" className="relative py-24 lg:py-32 px-5 lg:px-8 overflow-hidden">
       {/* Gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-[#0e2352]" />
 
@@ -43,7 +45,7 @@ export default function FinalCTA() {
           transition={{ delay: 0.1 }}
           className="text-3xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight mb-6"
         >
-          ¿Listo para transformar su gestión metrológica?
+          ¿Listo para optimizar su calibración de equipos y gestión metrológica?
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -62,25 +64,29 @@ export default function FinalCTA() {
           transition={{ delay: 0.3 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <motion.a
-            href="#contacto"
-            onClick={(e) => scrollTo(e, '#contacto')}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2.5 px-8 py-4 bg-white text-primary font-bold text-sm no-underline rounded-xl shadow-2xl shadow-black/20"
-          >
-            Solicitar Demo <ArrowRight size={16} />
-          </motion.a>
-          <motion.a
-            href="https://wa.me/573045895754"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2.5 px-8 py-4 border border-white/20 text-white font-semibold text-sm no-underline rounded-xl hover:bg-white/10 transition-colors"
-          >
-            <MessageCircle size={16} /> WhatsApp
-          </motion.a>
+          <Magnet padding={80} magnetStrength={2}>
+            <motion.a
+              href="#contacto"
+              onClick={(e) => scrollTo(e, '#contacto')}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2.5 px-8 py-4 bg-white text-primary font-bold text-sm no-underline rounded-xl shadow-2xl shadow-black/20"
+            >
+              Solicitar Demo <ArrowRight size={16} />
+            </motion.a>
+          </Magnet>
+          <Magnet padding={80} magnetStrength={2}>
+            <motion.a
+              href="https://wa.me/573006167292"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2.5 px-8 py-4 border border-white/20 text-white font-semibold text-sm no-underline rounded-xl hover:bg-white/10 transition-colors"
+            >
+              <MessageCircle size={16} /> WhatsApp
+            </motion.a>
+          </Magnet>
         </motion.div>
       </div>
     </section>

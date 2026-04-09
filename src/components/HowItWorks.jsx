@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { Search, Send, Settings, BarChart3 } from 'lucide-react'
+import GradientText from './reactbits/GradientText'
+import SpotlightCard from './reactbits/SpotlightCard'
 
 const steps = [
   {
@@ -26,7 +28,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="como-funciona" className="bg-off py-24 lg:py-32 px-5 lg:px-8">
+    <section id="como-funciona" aria-label="Proceso de implementación de gestión metrológica" className="bg-off py-24 lg:py-32 px-5 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <motion.span
@@ -44,8 +46,10 @@ export default function HowItWorks() {
             transition={{ delay: 0.1 }}
             className="text-3xl lg:text-5xl font-extrabold tracking-tight text-dark mb-5"
           >
-            Simple de implementar,{' '}
-            <span className="gradient-text">poderoso en resultados.</span>
+            Implementación simple,{' '}
+            <GradientText colors={['#2059A5', '#3B7DD8', '#34A853', '#143570']} animationSpeed={6} className="text-3xl lg:text-5xl font-extrabold tracking-tight">
+              resultados medibles.
+            </GradientText>
           </motion.h2>
         </div>
 
@@ -64,6 +68,10 @@ export default function HowItWorks() {
               transition={{ duration: 0.4, delay: i * 0.12 }}
               className="relative bg-white rounded-2xl p-7 border border-gray-100 text-center hover:shadow-lg hover:shadow-primary/5 transition-all"
             >
+              <SpotlightCard
+                spotlightColor="rgba(32, 89, 165, 0.1)"
+                className="rounded-2xl h-full"
+              >
               {/* Step number */}
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-primary text-white text-[11px] font-bold flex items-center justify-center shadow-lg shadow-primary/30 z-10">
                 {i + 1}
@@ -73,6 +81,7 @@ export default function HowItWorks() {
               </div>
               <h3 className="text-base font-bold text-dark mb-2">{step.title}</h3>
               <p className="text-sm text-muted leading-relaxed">{step.desc}</p>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>

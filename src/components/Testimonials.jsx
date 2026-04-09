@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { Quote } from 'lucide-react'
+import GradientText from './reactbits/GradientText'
+import SpotlightCard from './reactbits/SpotlightCard'
 
 const testimonials = [
   {
@@ -21,7 +23,7 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-white py-24 lg:py-32 px-5 lg:px-8">
+    <section aria-label="Testimonios de clientes de metrología" className="bg-white py-24 lg:py-32 px-5 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <motion.span
@@ -40,7 +42,9 @@ export default function Testimonials() {
             className="text-3xl lg:text-5xl font-extrabold tracking-tight text-dark"
           >
             Lo que dicen{' '}
-            <span className="gradient-text">nuestros clientes.</span>
+            <GradientText colors={['#2059A5', '#3B7DD8', '#34A853', '#143570']} animationSpeed={6} className="text-3xl lg:text-5xl font-extrabold tracking-tight">
+              nuestros clientes.
+            </GradientText>
           </motion.h2>
         </div>
 
@@ -53,9 +57,13 @@ export default function Testimonials() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.12 }}
               whileHover={{ y: -4 }}
-              className="bg-off rounded-2xl p-7 border border-gray-100 hover:border-primary/15 hover:shadow-lg hover:shadow-primary/5 transition-all relative"
+              className=""
             >
-              <Quote size={28} className="text-primary/10 mb-4" />
+              <SpotlightCard
+                spotlightColor="rgba(32, 89, 165, 0.1)"
+                className="bg-off rounded-2xl p-7 border border-gray-100 hover:border-primary/15 hover:shadow-lg hover:shadow-primary/5 transition-all relative h-full"
+              >
+                <Quote size={28} className="text-primary/10 mb-4" />
               <p className="text-sm text-dark/80 leading-relaxed mb-8">{t.text}</p>
               <div className="flex items-center gap-3 mt-auto">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center text-white font-bold text-xs">
@@ -66,6 +74,7 @@ export default function Testimonials() {
                   <p className="text-xs text-muted">{t.role}</p>
                 </div>
               </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>

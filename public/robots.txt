@@ -1,3 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /assets/
+Disallow: /src/
+
+# Sitemap
 Sitemap: https://micra.com.co/sitemap.xml
+
+# Crawl-delay (optional, for polite bots)
+Crawl-delay: 1

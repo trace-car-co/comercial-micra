@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion'
 import { Cpu, BarChart3, Clock, ArrowRight } from 'lucide-react'
+import GradientText from './reactbits/GradientText'
+import SpotlightCard from './reactbits/SpotlightCard'
+import Magnet from './reactbits/Magnet'
 
 const pillars = [
   {
@@ -24,7 +27,7 @@ const pillars = [
 
 export default function ValueSection() {
   return (
-    <section id="plataforma" className="bg-white py-24 lg:py-32 px-5 lg:px-8">
+    <section id="plataforma" aria-label="Plataforma de software de metrología" className="bg-white py-24 lg:py-32 px-5 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-16">
           <div>
@@ -43,7 +46,7 @@ export default function ValueSection() {
               transition={{ delay: 0.1 }}
               className="text-3xl lg:text-5xl font-extrabold tracking-tight text-dark"
             >
-              La precisión que su{' '}
+              Software de metrología: la precisión que su{' '}
               <span className="gradient-text">empresa necesita.</span>
             </motion.h2>
           </div>
@@ -69,8 +72,12 @@ export default function ValueSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.12 }}
               whileHover={{ y: -6 }}
-              className="group bg-off rounded-2xl p-7 lg:p-8 border border-gray-100 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all"
+              className=""
             >
+              <SpotlightCard
+                spotlightColor="rgba(32, 89, 165, 0.1)"
+                className="group bg-off rounded-2xl p-7 lg:p-8 border border-gray-100 hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all h-full"
+              >
               <div className="flex items-center justify-between mb-6">
                 <div className="w-11 h-11 rounded-xl bg-primary/[0.08] flex items-center justify-center group-hover:bg-primary transition-colors">
                   <p.icon size={20} className="text-primary group-hover:text-white transition-colors" />
@@ -79,6 +86,7 @@ export default function ValueSection() {
               </div>
               <h3 className="text-lg font-bold text-dark mb-3">{p.title}</h3>
               <p className="text-sm text-muted leading-relaxed">{p.desc}</p>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>
@@ -95,18 +103,20 @@ export default function ValueSection() {
             <h3 className="text-xl font-bold text-white mb-1.5">¿Listo para optimizar su gestión metrológica?</h3>
             <p className="text-sm text-white/60">Conéctese con nuestro equipo y descubra el potencial de MICRA.</p>
           </div>
-          <motion.a
-            href="#contacto"
-            onClick={(e) => {
-              e.preventDefault()
-              document.querySelector('#contacto')?.scrollIntoView({ behavior: 'smooth' })
-            }}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-primary rounded-xl font-semibold no-underline text-sm whitespace-nowrap shadow-lg"
-          >
-            Agendar Demo <ArrowRight size={16} />
-          </motion.a>
+          <Magnet padding={60} magnetStrength={3}>
+            <motion.a
+              href="#contacto"
+              onClick={(e) => {
+                e.preventDefault()
+                document.querySelector('#contacto')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-primary rounded-xl font-semibold no-underline text-sm whitespace-nowrap shadow-lg"
+            >
+              Agendar Demo <ArrowRight size={16} />
+            </motion.a>
+          </Magnet>
         </motion.div>
       </div>
     </section>

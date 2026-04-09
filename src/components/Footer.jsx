@@ -5,7 +5,7 @@ import Logo from './Logo'
 
 const contactInfo = [
   { icon: Mail, label: 'Email', value: 'contacto@micra.com.co', href: 'mailto:contacto@micra.com.co' },
-  { icon: Phone, label: 'WhatsApp', value: '+57 304 589 5754', href: 'https://wa.me/573045895754' },
+  { icon: Phone, label: 'WhatsApp', value: '+57 300 616 7292', href: 'https://wa.me/573006167292' },
   { icon: Globe, label: 'Web', value: 'www.micra.com.co', href: 'https://www.micra.com.co' },
   { icon: Clock, label: 'Horario', value: 'Lun – Vie · 8 AM – 6 PM', href: null },
 ]
@@ -21,8 +21,21 @@ export default function Footer() {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (!form.name || !form.email || !form.company) return
-    setFormState('sending')
-    setTimeout(() => setFormState('sent'), 1200)
+
+    const lines = [
+      '🔬 *Solicitud de Demo — MICRA*',
+      '',
+      `👤 *Nombre:* ${form.name}`,
+      `🏢 *Empresa:* ${form.company}`,
+      `📧 *Email:* ${form.email}`,
+      form.phone ? `📱 *Teléfono:* ${form.phone}` : '',
+      form.sector ? `🏭 *Sector:* ${form.sector}` : '',
+      form.message ? `💬 *Mensaje:* ${form.message}` : '',
+    ].filter(Boolean).join('\n')
+
+    const url = `https://wa.me/573006167292?text=${encodeURIComponent(lines)}`
+    window.open(url, '_blank', 'noopener,noreferrer')
+    setFormState('sent')
   }
 
   return (
@@ -227,7 +240,7 @@ export default function Footer() {
               © 2026 MICRA · Precisión y Confianza · Colombia
             </p>
             <p className="text-xs text-white/20">
-              contacto@micra.com.co · +57 304 589 5754
+              contacto@micra.com.co · +57 300 616 7292
             </p>
           </div>
         </div>

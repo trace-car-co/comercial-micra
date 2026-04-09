@@ -120,6 +120,19 @@ export default function Hero() {
               </motion.a>
             </Magnet>
           </motion.div>
+
+          {/* Lab partner CTA */}
+          <motion.a
+            href="https://wa.me/573006167292?text=%C2%A1Hola!%20Soy%20laboratorio%20acreditado%20y%20me%20interesa%20trabajar%20con%20MICRA."
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="inline-flex items-center gap-1.5 text-xs text-white/40 hover:text-white/70 transition-colors no-underline mb-20"
+          >
+            🔬 ¿Eres laboratorio acreditado? <span className="underline underline-offset-2">Trabaja con nosotros</span> <ArrowRight size={12} />
+          </motion.a>
         </div>
 
         {/* Stats row with CountUp */}

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { UploadCloud, CheckCircle2, Loader2 } from 'lucide-react'
+import BlurText from './reactbits/BlurText'
 
 const mockResults = [
   { equipo: 'Multímetro Fluke 87V', magnitud: 'Corriente', vence: 'Jun 2026', estado: 'ok' },
@@ -47,18 +48,21 @@ export default function InteractiveDemo() {
             Control total<br />
             <span className="italic text-white/30">en sus manos.</span>
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-[15px] font-light text-white/40 leading-relaxed mb-12"
+            className="mb-12"
           >
-            Desarrollamos una aplicación web que transforma la gestión de
-            calibración. Centraliza, almacena y ofrece trazabilidad completa de
-            cada equipo de su empresa — accesible desde cualquier dispositivo, en
-            tiempo real.
-          </motion.p>
+            <BlurText
+              text="Desarrollamos una aplicación web que transforma la gestión de calibración. Centraliza, almacena y ofrece trazabilidad completa de cada equipo de su empresa."
+              delay={30}
+              animateBy="words"
+              direction="top"
+              className="text-[15px] font-light text-white/40 leading-relaxed"
+            />
+          </motion.div>
           <ul className="border-t border-white/[0.07] space-y-0">
             {[
               ['Repositorio centralizado', 'Todos los certificados y registros en un solo lugar, siempre disponibles.'],

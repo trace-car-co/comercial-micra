@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowRight } from 'lucide-react'
 import Logo from './Logo'
+import Magnet from './reactbits/Magnet'
 
 const links = [
   { label: 'Servicios', href: '#servicios' },
@@ -37,7 +38,7 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 lg:px-8 flex items-center justify-between h-[72px]">
-        <Logo />
+        <Logo light={!scrolled} />
 
         <ul className="hidden lg:flex items-center gap-1 list-none">
           {links.map((l) => (
@@ -45,7 +46,9 @@ export default function Navbar() {
               <a
                 href={l.href}
                 onClick={(e) => scrollTo(e, l.href)}
-                className="text-[13px] font-medium text-muted hover:text-dark no-underline px-4 py-2 rounded-lg hover:bg-gray-50 transition-all"
+                className={`text-[13px] font-medium no-underline px-4 py-2 rounded-lg transition-all ${
+                  scrolled ? 'text-muted hover:text-dark hover:bg-gray-50' : 'text-white/70 hover:text-white hover:bg-white/10'
+                }`}
               >
                 {l.label}
               </a>
@@ -54,17 +57,20 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-3">
-          <a
-            href="#contacto"
-            onClick={(e) => scrollTo(e, '#contacto')}
-            className="hidden lg:inline-flex items-center gap-2 text-[13px] font-semibold text-white no-underline px-5 py-2.5 bg-primary rounded-xl hover:bg-primary-dark transition-colors shadow-lg shadow-primary/20"
-          >
-            Solicitar Demo <ArrowRight size={14} />
-          </a>
+          <Magnet padding={50} magnetStrength={3}>
+            <a
+              href="#contacto"
+              onClick={(e) => scrollTo(e, '#contacto')}
+              className="hidden lg:inline-flex items-center gap-2 text-[13px] font-semibold text-white no-underline px-5 py-2.5 bg-primary rounded-xl hover:bg-primary-dark transition-colors shadow-lg shadow-primary/20"
+            >
+              Solicitar Demo <ArrowRight size={14} />
+            </a>
+          </Magnet>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden p-2 text-dark rounded-lg hover:bg-gray-50"
+            className="lg:hidden p-2 rounded-lg hover:bg-white/10"
+            style={{ color: scrolled ? '#0D0D0F' : '#fff' }}
             aria-label="Menu"
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
